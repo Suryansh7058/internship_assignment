@@ -2,31 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { List } from '@mui/material';
 import NameListItem from './NameListItem';
+import { UserType } from '../App';
 
-const URL = 'https://run.mocky.io/v3/8260aa5d-8af8-4cff-999e-6e81b217f0ba';
-
-export type UserType = {
-  name: string;
-  id: string;
-  company: string;
-  orderId: string;
-  invoicepaid: string;
-  invoicePending: string;
+type Props = {
+  users: UserType[] | null;
 };
 
-const NameList = () => {
-  const [users, setUsers] = useState<UserType[] | null>(null);
-  useEffect(() => {
-    (async () => {
-      if (localStorage.getItem('users')) {
-        setUsers(JSON.parse(localStorage.users));
-      } else {
-        const { data } = await axios.get(URL);
-        setUsers(data.clients);
-        localStorage.setItem('users', JSON.stringify(data.clients));
-      }
-    })();
-  }, []);
+const NameList = ({ users }: Props) => {
   return (
     <List
       sx={{

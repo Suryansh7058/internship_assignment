@@ -40,7 +40,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const Navbar = () => {
+type Props = {
+  searchFilterFunction: (name: string) => void;
+};
+
+const Navbar = ({ searchFilterFunction }: Props) => {
   return (
     <AppBar>
       <Toolbar
@@ -59,7 +63,9 @@ const Navbar = () => {
             color="primary"
             inputComponent="input"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              console.log(e.target.value);
+              let str = e.target.value;
+              str = str.charAt(0).toUpperCase() + str.slice(1);
+              searchFilterFunction(str);
             }}
           />
         </Search>
