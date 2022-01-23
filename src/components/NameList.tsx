@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { List } from '@mui/material';
 import NameListItem from './NameListItem';
 import { UserType } from '../App';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListItem, ListItemText, Typography } from '@mui/material';
+import { ListItem, ListItemText } from '@mui/material';
 import { UserType } from '../App';
 import { styled, alpha } from '@mui/material/styles';
 
