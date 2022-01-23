@@ -1,20 +1,6 @@
 import React from 'react';
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Menu,
-  MenuItem,
-  Box,
-  InputBase,
-  Badge,
-} from '@mui/material';
+import { AppBar, Toolbar, InputBase } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
-import MenuIcon from '@mui/icons-material/Menu';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import MoreIcon from '@mui/icons-material/MoreVert';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
 import SearchIcon from '@mui/icons-material/Search';
 
 const Search = styled('div')(({ theme }) => ({
@@ -29,7 +15,7 @@ const Search = styled('div')(({ theme }) => ({
   width: '100%',
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(3),
-    width: 'auto',
+    width: '40rem',
   },
 }));
 const SearchIconWrapper = styled('div')(({ theme }) => ({
@@ -45,7 +31,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
@@ -57,23 +42,20 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Navbar = () => {
   return (
-    <AppBar sx={{ mt: '5rem' }}>
-      <Toolbar>
-        <IconButton
-          size="large"
-          edge="start"
-          color="inherit"
-          aria-label="open drawer"
-          sx={{ mr: 2 }}
-        >
-          <MenuIcon />
-        </IconButton>
+    <AppBar>
+      <Toolbar
+        sx={{
+          display: { sm: 'none', md: 'flex' },
+          flexGrow: 1,
+          justifyContent: 'space-around',
+        }}
+      >
         <Search>
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>
           <StyledInputBase
-            placeholder="Search..."
+            placeholder="Filter Through Name"
             color="primary"
             inputComponent="input"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -81,24 +63,6 @@ const Navbar = () => {
             }}
           />
         </Search>
-
-        <Box
-          sx={{
-            display: { xs: 'none', md: 'flex' },
-            flexGrow: '1',
-            justifyContent: 'flex-end',
-          }}
-        >
-          <IconButton
-            size="large"
-            aria-label="show 4 new mails"
-            color="inherit"
-          >
-            <Badge badgeContent={7} color="error">
-              <MailIcon fontSize="inherit" />
-            </Badge>
-          </IconButton>
-        </Box>
       </Toolbar>
     </AppBar>
   );
