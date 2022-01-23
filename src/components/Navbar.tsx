@@ -7,17 +7,19 @@ import {
   MenuItem,
   Box,
   InputBase,
+  Badge,
 } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import MailIcon from '@mui/icons-material/Mail';
 import SearchIcon from '@mui/icons-material/Search';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
-  borderRadius: theme.shape.borderRadius,
+  borderRadius: '1000px',
   backgroundColor: alpha(theme.palette.common.white, 0.45),
   '&:hover': {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
@@ -47,8 +49,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
+    [theme.breakpoints.up('sm')]: {
+      width: '15rem',
     },
   },
 }));
@@ -79,6 +81,24 @@ const Navbar = () => {
             }}
           />
         </Search>
+
+        <Box
+          sx={{
+            display: { xs: 'none', md: 'flex' },
+            flexGrow: '1',
+            justifyContent: 'flex-end',
+          }}
+        >
+          <IconButton
+            size="large"
+            aria-label="show 4 new mails"
+            color="inherit"
+          >
+            <Badge badgeContent={7} color="error">
+              <MailIcon fontSize="inherit" />
+            </Badge>
+          </IconButton>
+        </Box>
       </Toolbar>
     </AppBar>
   );
